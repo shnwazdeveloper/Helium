@@ -23,7 +23,8 @@
 
 ; --- Product Information ---
 !define PRODUCT_NAME "Helium"
-!define PRODUCT_PUBLISHER "imput"
+!define PRODUCT_PUBLISHER "SHNWAZ Developer"
+!define PRODUCT_OWNER "SHNWAZ Developer"
 !define PRODUCT_COMPANY_PATH "imput"
 !define PRODUCT_GUID "{FB68A146-637A-48C2-A0C4-1565DE45FEBD}"
 
@@ -52,7 +53,7 @@ Var SystemInstallExists
 
 ; Welcome page
 !define MUI_WELCOMEPAGE_TITLE "Welcome to ${PRODUCT_NAME} Setup"
-!define MUI_WELCOMEPAGE_TEXT "Setup will install ${PRODUCT_NAME} ${VERSION} on your computer.$\r$\n$\r$\nClick Next to continue."
+!define MUI_WELCOMEPAGE_TEXT "Setup will install ${PRODUCT_NAME} ${VERSION} on your computer.$\r$\n$\r$\nPackaged by ${PRODUCT_OWNER}.$\r$\n$\r$\nClick Next to continue."
 !insertmacro MUI_PAGE_WELCOME
 
 ; License page
@@ -81,7 +82,8 @@ VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
 VIAddVersionKey "CompanyName" "${PRODUCT_PUBLISHER}"
 VIAddVersionKey "FileDescription" "${PRODUCT_NAME} Installer"
 VIAddVersionKey "FileVersion" "${VERSION}"
-VIAddVersionKey "LegalCopyright" "Copyright The Helium Authors"
+VIAddVersionKey "LegalCopyright" "Copyright The Helium Authors. Packaged by ${PRODUCT_OWNER}."
+VIAddVersionKey "Comments" "SHNWAZ Developer Windows installer wrapper for Helium."
 
 ; =============================================================================
 ; Custom Install Type Page
