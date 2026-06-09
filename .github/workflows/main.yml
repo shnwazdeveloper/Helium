@@ -18,6 +18,11 @@ on:
         type: boolean
         description: 'Create a release after build is done'
         default: false
+      sign_binaries:
+        required: false
+        type: boolean
+        description: 'Sign binaries with Azure Trusted Signing'
+        default: false
 
 env:
   WINSPARKLE_ED_KEY: ${{ vars.WINSPARKLE_ED_KEY }}
@@ -422,6 +427,7 @@ jobs:
           from_artifact: true
 
       - name: Sign Helium binaries
+        if: ${{ inputs.sign_binaries }}
         uses: azure/artifact-signing-action@v1
         with:
           azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -432,10 +438,11 @@ jobs:
           certificate-profile-name: ${{ secrets.AZURE_SIGNING_CERTIFICATE_NAME }}
           files: ${{ steps.stage.outputs.files-to-sign }}
           description: Helium
-          description-url: https://github.com/imputnet/helium-windows
+          description-url: https://github.com/shnwazdeveloper/helium-windows
 
       # we want a different description here, so sign it separately again
       - name: Sign Helium update helper
+        if: ${{ inputs.sign_binaries }}
         uses: azure/artifact-signing-action@v1
         with:
           azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -446,7 +453,7 @@ jobs:
           certificate-profile-name: ${{ secrets.AZURE_SIGNING_CERTIFICATE_NAME }}
           files: C:\helium-windows\build\src\out\Default\helium_update_helper.exe
           description: Helium Update Helper
-          description-url: https://github.com/imputnet/helium-windows
+          description-url: https://github.com/shnwazdeveloper/helium-windows
 
       - name: Build Helium installer and package
         id: stage2
@@ -456,6 +463,7 @@ jobs:
           from_artifact: false
 
       - name: Sign Helium installer
+        if: ${{ inputs.sign_binaries }}
         uses: azure/artifact-signing-action@v1
         with:
           azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -466,7 +474,7 @@ jobs:
           certificate-profile-name: ${{ secrets.AZURE_SIGNING_CERTIFICATE_NAME }}
           files: C:\helium-windows\build\helium*-installer.exe
           description: Helium Installer
-          description-url: https://github.com/imputnet/helium-windows
+          description-url: https://github.com/shnwazdeveloper/helium-windows
 
       - name: Upload artifacts
         id: stage3
@@ -893,6 +901,7 @@ jobs:
           from_artifact: true
 
       - name: Sign Helium binaries
+        if: ${{ inputs.sign_binaries }}
         uses: azure/artifact-signing-action@v1
         with:
           azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -903,10 +912,11 @@ jobs:
           certificate-profile-name: ${{ secrets.AZURE_SIGNING_CERTIFICATE_NAME }}
           files: ${{ steps.stage.outputs.files-to-sign }}
           description: Helium
-          description-url: https://github.com/imputnet/helium-windows
+          description-url: https://github.com/shnwazdeveloper/helium-windows
 
       # we want a different description here, so sign it separately again
       - name: Sign Helium update helper
+        if: ${{ inputs.sign_binaries }}
         uses: azure/artifact-signing-action@v1
         with:
           azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -917,7 +927,7 @@ jobs:
           certificate-profile-name: ${{ secrets.AZURE_SIGNING_CERTIFICATE_NAME }}
           files: C:\helium-windows\build\src\out\Default\helium_update_helper.exe
           description: Helium Update Helper
-          description-url: https://github.com/imputnet/helium-windows
+          description-url: https://github.com/shnwazdeveloper/helium-windows
 
       - name: Build Helium installer and package
         id: stage2
@@ -928,6 +938,7 @@ jobs:
           from_artifact: false
 
       - name: Sign Helium installer
+        if: ${{ inputs.sign_binaries }}
         uses: azure/artifact-signing-action@v1
         with:
           azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -938,7 +949,7 @@ jobs:
           certificate-profile-name: ${{ secrets.AZURE_SIGNING_CERTIFICATE_NAME }}
           files: C:\helium-windows\build\helium*-installer.exe
           description: Helium Installer
-          description-url: https://github.com/imputnet/helium-windows
+          description-url: https://github.com/shnwazdeveloper/helium-windows
 
       - name: Upload artifacts
         id: stage3
@@ -997,7 +1008,7 @@ jobs:
         with:
           fail_on_unmatched_files: true
           body_path: ./github_release_note.md
-          prerelease: true
+          prerelease: false
           name: ${{ needs.build-final.outputs.version }}
           tag_name: ${{ needs.build-final.outputs.version }}
           files: |

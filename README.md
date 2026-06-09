@@ -93,6 +93,12 @@ python3 package.py
 
 A zip archive and an installer will be created under `build`.
 
+GitHub Actions can build an unsigned installer artifact from the patched source:
+
+```powershell
+gh workflow run main.yml --repo shnwazdeveloper/helium-windows -f runner=windows-2022 -f do-release=false -f sign_binaries=false
+```
+
 ### Required setup
 
 - Visual Studio with the Chromium Windows build components installed.
