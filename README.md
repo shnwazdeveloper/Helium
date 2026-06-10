@@ -3,22 +3,32 @@
 Unofficial Windows packaging mirror for the Helium browser, maintained by
 SHNWAZ Developer.
 
-This repository publishes a Windows installer for PC users and keeps owner links,
-release details, and build notes in one place.
+This repository publishes a Windows installer for PC users, a lightweight
+Android APK companion, and owner links, release details, and build notes in one
+place.
 
-## Download latest EXE
+## Download latest
 
 Latest release:
-[0.13.1.1](https://github.com/shnwazdeveloper/helium-windows/releases/tag/0.13.1.1)
+[0.13.1.3-shnwaz](https://github.com/shnwazdeveloper/helium-windows/releases/tag/0.13.1.3-shnwaz)
 
-Direct installer:
-[helium_0.13.1.1_x64-installer.exe](https://github.com/shnwazdeveloper/helium-windows/releases/download/0.13.1.1/helium_0.13.1.1_x64-installer.exe)
+Windows x64 installer:
+[helium_0.13.1.3-shnwaz_x64-installer.exe](https://github.com/shnwazdeveloper/helium-windows/releases/download/0.13.1.3-shnwaz/helium_0.13.1.3-shnwaz_x64-installer.exe)
+
+Android APK:
+[helium-mobile-shnwaz_0.13.1.3.apk](https://github.com/shnwazdeveloper/helium-windows/releases/download/0.13.1.3-shnwaz/helium-mobile-shnwaz_0.13.1.3.apk)
 
 SHA-256:
 
 ```text
-c6a6ce986077fa097a509ef5188b26ae0f42646fa5a6ea08ecc0d355f60f005c
+Windows EXE: f68024de2a16bcd8699305f9c9926be41ccf5c12bec5a18436516f0aae2f85c2
+Android APK: bc9de03c81fe72b33b2301ea0f820f491f1deb4299c08871432bc4a37efa76f3
 ```
+
+The `0.13.1.3-shnwaz` Windows installer uses the normal Helium NSIS installer
+layout with Chromium setup payloads. It replaces the older custom self-extracting
+wrapper from `0.13.1.2-shnwaz`, which triggered heuristic detections on some
+antivirus services.
 
 ## Owner
 
@@ -43,6 +53,7 @@ Use this map when editing the repo:
 - GitHub repo README and owner text: `README.md`
 - Owner social/profile page in this repo: `OWNER.md`
 - Windows installer wrapper metadata: `installer/helium.nsi`
+- Android APK companion app: `mobile/android`
 - Windows branding patch used during Chromium packaging:
   `patches/helium/windows/change-branding.patch`
 - In-browser About page owner line:
@@ -116,6 +127,33 @@ python -m pip install httplib2==0.22.0 Pillow
 
 Follow Chromium's official Windows build instructions for Visual Studio:
 https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/windows_build_instructions.md#visual-studio
+
+## Android APK
+
+The Android app in `mobile/android` is a lightweight WebView browser companion
+with SHNWAZ owner and social links. It is not a direct conversion of the Windows
+Chromium EXE, because Android apps use APK packaging and Android signing.
+
+Build it with:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File mobile\android\scripts\build-apk.ps1 `
+  -AndroidSdkRoot C:\path\to\android-sdk `
+  -JavaHome C:\path\to\jdk17 `
+  -OutputApk build\helium-mobile-shnwaz_0.13.1.3.apk
+```
+
+The build script signs the APK with a local SHNWAZ Developer development
+keystore under `build/android-signing`. For Play Store publishing, use Google
+Play App Signing or a production release keystore. Firebase App Distribution can
+distribute APKs, but it does not replace APK signing.
+
+## Signing and antivirus notes
+
+The Windows installer in this repository is unsigned unless a real Authenticode
+code-signing certificate is configured. Firebase does not sign Windows EXE files.
+For Windows trust reputation, use an Authenticode certificate and sign the EXE
+with Microsoft's signing tools.
 
 ## Credits
 

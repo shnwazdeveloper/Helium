@@ -6,8 +6,8 @@ Official owner profile for this Helium Windows fork and release page.
 
 ## Profile
 
-SHNWAZ Developer maintains this GitHub fork and release page for Windows EXE
-downloads.
+SHNWAZ Developer maintains this GitHub fork and release page for Windows EXE and
+Android APK downloads.
 
 ## Social links
 
