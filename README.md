@@ -30,22 +30,6 @@ layout with Chromium setup payloads. It replaces the older custom self-extractin
 wrapper from `0.13.1.2-shnwaz`, which triggered heuristic detections on some
 antivirus services.
 
-## Owner
-
-SHNWAZ Developer is the owner of this fork and release page.
-
-- Owner profile: https://shnwazdeveloper.github.io/owner.html
-- GitHub: https://github.com/shnwazdeveloper
-- GitHub avatar: https://avatars.githubusercontent.com/u/271950542?v=4
-- Telegram: https://t.me/Syntaxpy
-- X: https://x.com/shnwazdev
-- LinkedIn: https://www.linkedin.com/in/shnwazdev/
-- Instagram: https://instagram.com/sexyshnwaz
-- SayaProject: https://github.com/SayaProject
-- SayaGram: https://github.com/SayaGram
-
-More owner details are in [OWNER.md](OWNER.md).
-
 ## Where to change things
 
 Use this map when editing the repo:
