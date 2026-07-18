@@ -1,4 +1,4 @@
-# SHNWAZ Helium Windows
+# Helium 
 
 Unofficial Windows packaging mirror for the Helium browser, maintained by
 SHNWAZ Developer.
@@ -14,16 +14,6 @@ Latest release:
 
 Windows x64 installer:
 [helium_0.13.1.3-shnwaz_x64-installer.exe](https://github.com/shnwazdeveloper/helium-windows/releases/download/0.13.1.3-shnwaz/helium_0.13.1.3-shnwaz_x64-installer.exe)
-
-Android APK:
-[helium-mobile-shnwaz_0.13.1.3.apk](https://github.com/shnwazdeveloper/helium-windows/releases/download/0.13.1.3-shnwaz/helium-mobile-shnwaz_0.13.1.3.apk)
-
-SHA-256:
-
-```text
-Windows EXE: f68024de2a16bcd8699305f9c9926be41ccf5c12bec5a18436516f0aae2f85c2
-Android APK: bc9de03c81fe72b33b2301ea0f820f491f1deb4299c08871432bc4a37efa76f3
-```
 
 The `0.13.1.3-shnwaz` Windows installer uses the normal Helium NSIS installer
 layout with Chromium setup payloads. It replaces the older custom self-extracting
@@ -66,12 +56,6 @@ Suggested repository description:
 
 ```text
 SHNWAZ Developer Windows EXE releases for Helium browser, with owner profile and social links.
-```
-
-Suggested homepage:
-
-```text
-https://shnwazdeveloper.github.io/owner.html
 ```
 
 ## Building
