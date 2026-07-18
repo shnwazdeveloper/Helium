@@ -17,7 +17,7 @@ Windows x64 installer:
 
 The `0.13.1.3-shnwaz` Windows installer uses the normal Helium NSIS installer
 layout with Chromium setup payloads. It replaces the older custom self-extracting
-wrapper from `0.13.1.2-shnwaz`, which triggered heuristic detections on some
+wrapper from `0.13.1.2`, which triggered heuristic detections on some
 antivirus services.
 
 ## Where to change things
